@@ -78,6 +78,7 @@ entriesHime = 35297     entriesSamurai = 33876  mergedEvents = 23480
 ### 4. analysis
 - further analysis can be done on the merged files, see [`neutronAna`](./scratch/neutronAna/) and [`workdir/macros`](./scratch/workdir/macros/).
 
+- There are a few python/jupyter files, I generated a conda env using the [`./environement.yml](./environment.yml), i.e. `conda env create -f ./environement.yml --prefix ./env`. However, do not add ROOT in environment since for some reason it conflicts root in the machine. 
 
 ## TLDR
 For super fast instruction, see [`./scratch/merger/howtomerge.txt`](./scratch/merger/howtomerge.txt)
