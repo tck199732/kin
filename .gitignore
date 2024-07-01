@@ -1,0 +1,23 @@
+# anaroot symlinks
+src
+ridf
+matrix
+rootlogoff.C
+rootlogon.C
+db
+rootfiles
+
+# miniconda env
+env
+
+# vscode
+.vscode
+
+# emacs backup files
+*~
+
+# executables
+*.exe
+
+# figures 
+*.png

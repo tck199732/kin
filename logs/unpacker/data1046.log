@@ -1,0 +1,32 @@
+/home/s063/exp/exp2406_s063/anaroot/users/kin/src
+add include path : -I/home/s063/exp/exp2406_s063/anaroot/users/kin/src/include
+reading libXMLParser.so
+reading /home/s063/exp/exp2406_s063/anaroot/users/kin/src/lib/libanaroot.so
+
+ Manual of ANAROOT 
+  http://be.nucl.ap.titech.ac.jp/~kondo/moin/moin.cgi/ANAROOT/Manual
+
+
+Processing macros/UnpackSamuraiData.C("ridf/data1046.ridf", "unpacked/data1046.root")...
+  RIBFROOT-Info : [TArtEventStore] Constructor
+  RIBFROOT-Info : [TArtStoreManager] Constructor
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] regist raw data container in store manager : RawEvent
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : RunInfo
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : EventInfo
+  RIBFROOT-Info : [TArtFileDataSource] File = ridf/data1046.ridf
+  RIBFROOT-Info : [TArtFileDataSource] Size = 150.61 (MB)
+  RIBFROOT-Info : [TArtFileDataSource] Format = RIDF
+  RIBFROOT-Info : [TArtFileDataSource] Run name   = data
+  RIBFROOT-Info : [TArtFileDataSource] Run number = 1046
+  RIBFROOT-Info : [TArtFileDataSource] Start time = 07:02:44
+  RIBFROOT-Info : [TArtFileDataSource] Stop time  = 07:53:06
+  RIBFROOT-Info : [TArtFileDataSource] Date       = 18-Jun-24
+  RIBFROOT-Info : [TArtFileDataSource] Header     = low gain of 720V(1/1000) for 11-13, Kyoto multi 1
+  RIBFROOT-Info : [TArtFileDataSource] Ender      = 
+  RIBFROOT-Info : [TArtParserRIDF] Run number = 1046
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtDecoderVmeEasyroc.cc] Unknown data 0
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtDecoderVmeEasyroc.cc] Unknown data 0
+Error!! Channel for EASIROC should be less than 64!!: 72
+
+ no analoop is set
+

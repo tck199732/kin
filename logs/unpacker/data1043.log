@@ -1,0 +1,35 @@
+/home/s063/exp/exp2406_s063/anaroot/users/kin/src
+add include path : -I/home/s063/exp/exp2406_s063/anaroot/users/kin/src/include
+reading libXMLParser.so
+reading /home/s063/exp/exp2406_s063/anaroot/users/kin/src/lib/libanaroot.so
+
+ Manual of ANAROOT 
+  http://be.nucl.ap.titech.ac.jp/~kondo/moin/moin.cgi/ANAROOT/Manual
+
+
+Processing macros/UnpackSamuraiData.C("ridf/data1043.ridf", "unpacked/data1043.root")...
+  RIBFROOT-Info : [TArtEventStore] Constructor
+  RIBFROOT-Info : [TArtStoreManager] Constructor
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] regist raw data container in store manager : RawEvent
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : RunInfo
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : EventInfo
+  RIBFROOT-Info : [TArtFileDataSource] File = ridf/data1043.ridf
+  RIBFROOT-Info : [TArtFileDataSource] Size = 81.67 (MB)
+  RIBFROOT-Info : [TArtFileDataSource] Format = RIDF
+  RIBFROOT-Info : [TArtFileDataSource] Run name   = data
+  RIBFROOT-Info : [TArtFileDataSource] Run number = 1043
+  RIBFROOT-Info : [TArtFileDataSource] Start time = 04:46:29
+  RIBFROOT-Info : [TArtFileDataSource] Stop time  = 05:31:54
+  RIBFROOT-Info : [TArtFileDataSource] Date       = 18-Jun-24
+  RIBFROOT-Info : [TArtFileDataSource] Header     = log gain of 960V(1/10) for 9-13, Kyoto multi 4
+  RIBFROOT-Info : [TArtFileDataSource] Ender      = 
+  RIBFROOT-Info : [TArtParserRIDF] Run number = 1043
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtDecoderVmeEasyroc.cc] Unknown data 0
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtDecoderVmeEasyroc.cc] Unknown data 0
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtDecoderVmeEasyroc.cc] Unknown data 0
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtDecoderVmeEasyroc.cc] Unknown data 0
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtDecoderVmeEasyroc.cc] Unknown data 0
+Error!! Channel for EASIROC should be less than 64!!: 67
+
+ no analoop is set
+

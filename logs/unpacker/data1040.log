@@ -1,0 +1,30 @@
+/home/s063/exp/exp2406_s063/anaroot/users/kin/src
+add include path : -I/home/s063/exp/exp2406_s063/anaroot/users/kin/src/include
+reading libXMLParser.so
+reading /home/s063/exp/exp2406_s063/anaroot/users/kin/src/lib/libanaroot.so
+
+ Manual of ANAROOT 
+  http://be.nucl.ap.titech.ac.jp/~kondo/moin/moin.cgi/ANAROOT/Manual
+
+
+Processing macros/UnpackSamuraiData.C("ridf/data1040.ridf", "unpacked/data1040.root")...
+  RIBFROOT-Info : [TArtEventStore] Constructor
+  RIBFROOT-Info : [TArtStoreManager] Constructor
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] regist raw data container in store manager : RawEvent
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : RunInfo
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : EventInfo
+  RIBFROOT-Info : [TArtFileDataSource] File = ridf/data1040.ridf
+  RIBFROOT-Info : [TArtFileDataSource] Size = 51.51 (MB)
+  RIBFROOT-Info : [TArtFileDataSource] Format = RIDF
+  RIBFROOT-Info : [TArtFileDataSource] Run name   = data
+  RIBFROOT-Info : [TArtFileDataSource] Run number = 1040
+  RIBFROOT-Info : [TArtFileDataSource] Start time = 02:39:11
+  RIBFROOT-Info : [TArtFileDataSource] Stop time  = 03:20:58
+  RIBFROOT-Info : [TArtFileDataSource] Date       = 18-Jun-24
+  RIBFROOT-Info : [TArtFileDataSource] Header     = log gain of 1214V(1/10) for 9-13, HIME connection checked
+  RIBFROOT-Info : [TArtFileDataSource] Ender      = 
+  RIBFROOT-Info : [TArtParserRIDF] Run number = 1040
+Error!! Channel for SBT TDC must be 6, 7, 8, 9 or 32, 33! : 0
+
+ no analoop is set
+

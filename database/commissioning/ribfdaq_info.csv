@@ -1,0 +1,7 @@
+detector,detector_id,babies,eid,module,module_id
+SBT-Q,2,sdaq43,85,MQDC32,5
+SBT-T,3,sdaq43,85,MTDC32,6
+BDC,27,sdaq27,59,AMTTDC,36
+HIME-VETO,50,sdaq59,101,V1290,25
+Scaler,61,spvme00,96,SIS3820,8
+Kyoto,40,spana01,98,VME-EASIROC,35

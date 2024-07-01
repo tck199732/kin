@@ -1,0 +1,29 @@
+/home/s063/exp/exp2406_s063/anaroot/users/kin/src
+add include path : -I/home/s063/exp/exp2406_s063/anaroot/users/kin/src/include
+reading libXMLParser.so
+reading /home/s063/exp/exp2406_s063/anaroot/users/kin/src/lib/libanaroot.so
+
+ Manual of ANAROOT 
+  http://be.nucl.ap.titech.ac.jp/~kondo/moin/moin.cgi/ANAROOT/Manual
+
+
+Processing macros/UnpackSamuraiData.C("ridf/data1036.ridf", "unpacked/data1036.root")...
+  RIBFROOT-Info : [TArtEventStore] Constructor
+  RIBFROOT-Info : [TArtStoreManager] Constructor
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] regist raw data container in store manager : RawEvent
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : RunInfo
+  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : EventInfo
+  RIBFROOT-Info : [TArtFileDataSource] File = ridf/data1036.ridf
+  RIBFROOT-Info : [TArtFileDataSource] Size = 74.51 (MB)
+  RIBFROOT-Info : [TArtFileDataSource] Format = RIDF
+  RIBFROOT-Info : [TArtFileDataSource] Run name   = data
+  RIBFROOT-Info : [TArtFileDataSource] Run number = 1036
+  RIBFROOT-Info : [TArtFileDataSource] Start time = 23:16:54
+  RIBFROOT-Info : [TArtFileDataSource] Stop time  = 00:14:20
+  RIBFROOT-Info : [TArtFileDataSource] Date       = 18-Jun-24
+  RIBFROOT-Info : [TArtFileDataSource] Header     = DAQ reconfigure done. Data taking
+  RIBFROOT-Info : [TArtFileDataSource] Ender      = 
+  RIBFROOT-Info : [TArtParserRIDF] Run number = 1036
+
+ no analoop is set
+
