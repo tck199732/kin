@@ -192,14 +192,14 @@ void draw_HIME_commisioning(
 		hime_veto_bar_fired[1] = 0;
 		hime_veto_bar_fired[2] = 0;
 
-		for (int v_hit = 0; v_hit < spirit.hime_veto_multi; v_hit++) {
-			if (spirit.hime_veto_charge[v_hit] > 0)
+		for (int v_hit = 0; v_hit < spirit.vetoMulti; v_hit++) {
+			if (spirit.vetoTot[v_hit] > 0)
 				isVetoCharge = 1;
-			if (spirit.hime_veto_bar[v_hit] == 0)
+			if (spirit.vetoBarId[v_hit] == 0)
 				hime_veto_bar_fired[0] = 1;
-			if (spirit.hime_veto_bar[v_hit] == 1)
+			if (spirit.vetoBarId[v_hit] == 1)
 				hime_veto_bar_fired[1] = 1;
-			if (spirit.hime_veto_bar[v_hit] == 2)
+			if (spirit.vetoBarId[v_hit] == 2)
 				hime_veto_bar_fired[2] = 1;
 		}
 		for (auto h = 0; h < spirit.hime_nHits; h++) {
@@ -247,8 +247,8 @@ void draw_HIME_commisioning(
 				posdep -= totdistance;
 				double timecorrection = posdep / 2.9999 * 10;
 				if (debug) {
-					cout << mod << "\t" << (spirit.hime_tDiff[h] - pos_offset[mod]) << "\t"
-						 << "(" << xhit << "," << yhit << ") = " << rhit << "\t" << posdep;
+					cout << mod << "\t" << (spirit.hime_tDiff[h] - pos_offset[mod]) << "\t" << "(" << xhit << ","
+						 << yhit << ") = " << rhit << "\t" << posdep;
 					cout << "\t" << timecorrection << endl;
 				}
 				tofCalib =
@@ -268,7 +268,7 @@ void draw_HIME_commisioning(
 				if ((calibrate_tof ? (tofCalib > -180) : (tofCalib > -20)) &&
 					(calibrate_tof ? (tofCalib < -50) : (tofCalib < 200)) && (tot >= mTotMin && tot <= mTotMax) &&
 					//					(!isVetoCharge)) {
-					(mVetoWallMult0 ? (spirit.hime_veto_multi == 0) : (spirit.hime_veto_multi >= 0))) {
+					(mVetoWallMult0 ? (spirit.vetoMulti == 0) : (spirit.vetoMulti >= 0))) {
 
 					// if (x_pos_calibrated > -300 && x_pos_calibrated < 300 && y_pos_calibrated > -300 &&
 					// y_pos_calibrated < 300)
@@ -312,12 +312,12 @@ void draw_HIME_commisioning(
 						hModuleIDVsTDiffgatedV2.Fill(dt_calibrated, mod);
 
 					/*
-										for (int v_hit = 0; v_hit < spirit.hime_veto_multi; v_hit++) {
-											if (spirit.hime_veto_bar[v_hit] == 0)
+										for (int v_hit = 0; v_hit < spirit.vetoMulti; v_hit++) {
+											if (spirit.vetoBarId[v_hit] == 0)
 												hModuleIDVsTDiffgatedV0.Fill(dt_calibrated, mod);
-											if (spirit.hime_veto_bar[v_hit] == 1)
+											if (spirit.vetoBarId[v_hit] == 1)
 												hModuleIDVsTDiffgatedV1.Fill(dt_calibrated, mod);
-											if (spirit.hime_veto_bar[v_hit] == 2)
+											if (spirit.vetoBarId[v_hit] == 2)
 												hModuleIDVsTDiffgatedV2.Fill(dt_calibrated, mod);
 				}
 					*/

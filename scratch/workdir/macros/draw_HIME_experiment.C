@@ -85,11 +85,11 @@ void draw_HIME_experiment(
 			"spirit/data1217.root",
 			"spirit/data1218.root",
 			"spirit/data1219.root",
-			"spirit/data1220.root",
+			// "spirit/data1220.root",
 			"spirit/data1221.root",
 			"spirit/data1222.root",
 			"spirit/data1223.root",
-			"spirit/data1224.root",
+			// "spirit/data1224.root",
 			"spirit/data1225.root",
 			"spirit/data1226.root",
 			"spirit/data1227.root",
@@ -98,11 +98,11 @@ void draw_HIME_experiment(
 			"spirit/data1230.root",
 			"spirit/data1231.root",
 			"spirit/data1232.root",
-			"spirit/data1233.root",
+			// "spirit/data1233.root",
 			"spirit/data1234.root",
 			"spirit/data1235.root", 
 			"spirit/data1236.root",
-			"spirit/data1237.root",
+			// "spirit/data1237.root",
 			"spirit/data1238.root",
 			"spirit/data1239.root",
 			"spirit/data1240.root",
@@ -383,45 +383,39 @@ void draw_HIME_experiment(
 		hime_veto_bar_fired[1] = 0;
 		hime_veto_bar_fired[2] = 0;
 		double nVetoWallXpos;
-		for (int v_hit = 0; v_hit < spirit.hime_veto_multi; v_hit++) {
+		for (int v_hit = 0; v_hit < spirit.vetoMulti; v_hit++) {
 			isVetoCharge = 1;
-			if (spirit.hime_veto_bar[v_hit] == 0) {
+			if (spirit.vetoBarId[v_hit] == 0) {
 				hime_veto_bar_fired[0] = 1;
-				hVW_ToTvsTDiffD1.Fill(spirit.hime_veto_tdiff[v_hit] / 40, spirit.hime_veto_charge[v_hit] / 40);
+				hVW_ToTvsTDiffD1.Fill(spirit.vetoTdiff[v_hit] / 40, spirit.vetoTot[v_hit] / 40);
 				if (calibrationBarL2Hit) {
-					hVW_ToTvsTDiffD1_gated.Fill(
-						spirit.hime_veto_tdiff[v_hit] / 40, spirit.hime_veto_charge[v_hit] / 40
-					);
-					//					cout << spirit.hime_veto_tdiff[v_hit] / 40 << " , " <<
-					// spirit.hime_veto_charge[v_hit] / 40 << endl;
+					hVW_ToTvsTDiffD1_gated.Fill(spirit.vetoTdiff[v_hit] / 40, spirit.vetoTot[v_hit] / 40);
+					//					cout << spirit.vetoTdiff[v_hit] / 40 << " , " <<
+					// spirit.vetoTot[v_hit] / 40 << endl;
 				}
-				nVetoWallXpos = -0.0755 * spirit.hime_veto_tdiff[v_hit] / 40 + 0.0416;
+				nVetoWallXpos = -0.0755 * spirit.vetoTdiff[v_hit] / 40 + 0.0416;
 				nVetoWallXpos *= 1000;
-				hVW_ToTvsXposD1.Fill(nVetoWallXpos, spirit.hime_veto_charge[v_hit] / 40);
+				hVW_ToTvsXposD1.Fill(nVetoWallXpos, spirit.vetoTot[v_hit] / 40);
 			}
-			if (spirit.hime_veto_bar[v_hit] == 1) {
+			if (spirit.vetoBarId[v_hit] == 1) {
 				hime_veto_bar_fired[1] = 1;
-				hVW_ToTvsTDiffD2.Fill(spirit.hime_veto_tdiff[v_hit] / 40, spirit.hime_veto_charge[v_hit] / 40);
+				hVW_ToTvsTDiffD2.Fill(spirit.vetoTdiff[v_hit] / 40, spirit.vetoTot[v_hit] / 40);
 				if (calibrationBarL2Hit) {
-					hVW_ToTvsTDiffD2_gated.Fill(
-						spirit.hime_veto_tdiff[v_hit] / 40, spirit.hime_veto_charge[v_hit] / 40
-					);
+					hVW_ToTvsTDiffD2_gated.Fill(spirit.vetoTdiff[v_hit] / 40, spirit.vetoTot[v_hit] / 40);
 				}
-				nVetoWallXpos = -0.0726 * spirit.hime_veto_tdiff[v_hit] / 40 + 0.04402;
+				nVetoWallXpos = -0.0726 * spirit.vetoTdiff[v_hit] / 40 + 0.04402;
 				nVetoWallXpos *= 1000;
-				hVW_ToTvsXposD2.Fill(nVetoWallXpos, spirit.hime_veto_charge[v_hit] / 40);
+				hVW_ToTvsXposD2.Fill(nVetoWallXpos, spirit.vetoTot[v_hit] / 40);
 			}
-			if (spirit.hime_veto_bar[v_hit] == 2) {
+			if (spirit.vetoBarId[v_hit] == 2) {
 				hime_veto_bar_fired[2] = 1;
-				hVW_ToTvsTDiffD3.Fill(spirit.hime_veto_tdiff[v_hit] / 40, spirit.hime_veto_charge[v_hit] / 40);
+				hVW_ToTvsTDiffD3.Fill(spirit.vetoTdiff[v_hit] / 40, spirit.vetoTot[v_hit] / 40);
 				if (calibrationBarL2Hit) {
-					hVW_ToTvsTDiffD3_gated.Fill(
-						spirit.hime_veto_tdiff[v_hit] / 40, spirit.hime_veto_charge[v_hit] / 40
-					);
+					hVW_ToTvsTDiffD3_gated.Fill(spirit.vetoTdiff[v_hit] / 40, spirit.vetoTot[v_hit] / 40);
 				}
-				nVetoWallXpos = -0.0759 * spirit.hime_veto_tdiff[v_hit] / 40 - 0.0167;
+				nVetoWallXpos = -0.0759 * spirit.vetoTdiff[v_hit] / 40 - 0.0167;
 				nVetoWallXpos *= 1000;
-				hVW_ToTvsXposD3.Fill(nVetoWallXpos, spirit.hime_veto_charge[v_hit] / 40);
+				hVW_ToTvsXposD3.Fill(nVetoWallXpos, spirit.vetoTot[v_hit] / 40);
 			}
 		}
 		for (auto h = 0; h < spirit.hime_nHits; h++) {
@@ -469,8 +463,8 @@ void draw_HIME_experiment(
 				posdep -= totdistance;
 				double timecorrection = posdep / 2.9999 * 10;
 				if (debug) {
-					cout << mod << "\t" << (spirit.hime_tDiff[h] - pos_offset[mod]) << "\t"
-						 << "(" << xhit << "," << yhit << ") = " << rhit << "\t" << posdep;
+					cout << mod << "\t" << (spirit.hime_tDiff[h] - pos_offset[mod]) << "\t" << "(" << xhit << ","
+						 << yhit << ") = " << rhit << "\t" << posdep;
 					cout << "\t" << timecorrection << endl;
 				}
 				tofCalib =
@@ -498,7 +492,7 @@ void draw_HIME_experiment(
 				double hime_pos_cut = 600;
 				if ((calibrate_tof ? (tofCalib > -180) : (tofCalib > -100)) &&
 					(calibrate_tof ? (tofCalib < -50) : (tofCalib < 300)) && (tot >= mTotMin && tot <= mTotMax) &&
-					(mVetoWallMult0 ? (spirit.hime_veto_multi == 0) : (spirit.hime_veto_multi >= 0)) &&
+					(mVetoWallMult0 ? (spirit.vetoMulti == 0) : (spirit.vetoMulti >= 0)) &&
 					x_pos_calibrated > -1 * hime_pos_cut && x_pos_calibrated < hime_pos_cut &&
 					y_pos_calibrated > -1 * hime_pos_cut && y_pos_calibrated < hime_pos_cut) {
 
@@ -547,12 +541,12 @@ void draw_HIME_experiment(
 						hModuleIDVsTDiffgatedV2.Fill(dt_calibrated, mod);
 
 					/*
-										for (int v_hit = 0; v_hit < spirit.hime_veto_multi; v_hit++) {
-											if (spirit.hime_veto_bar[v_hit] == 0)
+										for (int v_hit = 0; v_hit < spirit.vetoMulti; v_hit++) {
+											if (spirit.vetoBarId[v_hit] == 0)
 												hModuleIDVsTDiffgatedV0.Fill(dt_calibrated, mod);
-											if (spirit.hime_veto_bar[v_hit] == 1)
+											if (spirit.vetoBarId[v_hit] == 1)
 												hModuleIDVsTDiffgatedV1.Fill(dt_calibrated, mod);
-											if (spirit.hime_veto_bar[v_hit] == 2)
+											if (spirit.vetoBarId[v_hit] == 2)
 												hModuleIDVsTDiffgatedV2.Fill(dt_calibrated, mod);
 				}
 					*/

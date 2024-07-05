@@ -19,16 +19,15 @@ struct spiritData {
 	ULong64_t hime_fastScaler;
 	ULong64_t hime_eventNumber;
 
-	unsigned int run, event;
-	ULong64_t lupots;
-	unsigned int kyoto_multi;
-	std::array<unsigned int, SAMURAI_MAXHITS> kyoto_bar;
-	unsigned int hime_veto_multi;
-	std::array<unsigned int, SAMURAI_MAXHITS> hime_veto_bar;
-	std::array<double, SAMURAI_MAXHITS> hime_veto_tof;
-	std::array<double, SAMURAI_MAXHITS> hime_veto_charge;
-	std::array<double, SAMURAI_MAXHITS> hime_veto_tdiff;
-	std::array<double, SAMURAI_MAXHITS> hime_veto_x;
+	unsigned int runNumber, eventNumber;
+	ULong64_t lupoTimeStamp;
+	unsigned int kyotoMulti;
+	std::array<unsigned int, SAMURAI_MAXHITS> kyotoBarId;
+	unsigned int vetoMulti;
+	std::array<unsigned int, SAMURAI_MAXHITS> vetoBarId;
+	std::array<double, SAMURAI_MAXHITS> vetoTof;
+	std::array<double, SAMURAI_MAXHITS> vetoTot;
+	std::array<double, SAMURAI_MAXHITS> vetoTdiff;
 
 	void reset();
 };
@@ -48,17 +47,16 @@ void spiritData::reset() {
 	hime_fastScaler = 0;
 	hime_eventNumber = 0;
 
-	run = 0;
-	event = 0;
-	lupots = 0;
-	kyoto_multi = 0;
-	kyoto_bar.fill(0);
-	hime_veto_multi = 0;
-	hime_veto_bar.fill(0);
-	hime_veto_tof.fill(0);
-	hime_veto_charge.fill(0);
-	hime_veto_tdiff.fill(0);
-	hime_veto_x.fill(0);
+	runNumber = 0;
+	eventNumber = 0;
+	lupoTimeStamp = 0;
+	kyotoMulti = 0;
+	kyotoBarId.fill(0);
+	vetoMulti = 0;
+	vetoBarId.fill(0);
+	vetoTof.fill(0);
+	vetoTot.fill(0);
+	vetoTdiff.fill(0);
 	return;
 }
 
@@ -75,17 +73,16 @@ void SetBranchAddress(TChain *&chain) {
 	chain->SetBranchAddress("hime_fastScaler", &spirit.hime_fastScaler);
 	chain->SetBranchAddress("hime_eventNumber", &spirit.hime_eventNumber);
 
-	chain->SetBranchAddress("run", &spirit.run);
-	chain->SetBranchAddress("event", &spirit.event);
-	chain->SetBranchAddress("lupots", &spirit.lupots);
-	chain->SetBranchAddress("kyoto_multi", &spirit.kyoto_multi);
-	chain->SetBranchAddress("kyoto_bar", &spirit.kyoto_bar[0]);
-	chain->SetBranchAddress("hime_veto_multi", &spirit.hime_veto_multi);
-	chain->SetBranchAddress("hime_veto_bar", &spirit.hime_veto_bar[0]);
-	chain->SetBranchAddress("hime_veto_tof", &spirit.hime_veto_tof[0]);
-	chain->SetBranchAddress("hime_veto_charge", &spirit.hime_veto_charge[0]);
-	chain->SetBranchAddress("hime_veto_tdiff", &spirit.hime_veto_tdiff[0]);
-	chain->SetBranchAddress("hime_veto_x", &spirit.hime_veto_x[0]);
+	chain->SetBranchAddress("runNumber", &spirit.runNumber);
+	chain->SetBranchAddress("eventNumber", &spirit.eventNumber);
+	chain->SetBranchAddress("lupoTimeStamp", &spirit.lupoTimeStamp);
+	chain->SetBranchAddress("kyotoMulti", &spirit.kyotoMulti);
+	chain->SetBranchAddress("kyotoBarId", &spirit.kyotoBarId[0]);
+	chain->SetBranchAddress("vetoMulti", &spirit.vetoMulti);
+	chain->SetBranchAddress("vetoBarId", &spirit.vetoBarId[0]);
+	chain->SetBranchAddress("vetoTof", &spirit.vetoTof[0]);
+	chain->SetBranchAddress("vetoTot", &spirit.vetoTot[0]);
+	chain->SetBranchAddress("vetoTdiff", &spirit.vetoTdiff[0]);
 	return;
 }
 
