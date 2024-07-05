@@ -23,23 +23,22 @@ struct argParser {
 
 argParser args;
 
-void CreateBranches(TTree *&mergedTree);
+void createMergedBranches(TTree *&mergedTree);
 void AddArguments(int argc, char **argv);
 argparse::ArgumentParser program("Hime-Samurai Merger", "1.0");
 int main(int argc, char *argv[]) {
 	AddArguments(argc, argv);
+
 	auto chainSamurai = new TChain(SAMURAI_TREENAME.c_str(), SAMURAI_TREENAME.c_str());
 	auto chainHime = new TChain(HIME_TREENAME.c_str());
-
 	chainSamurai->Add(args.samuraiFilename.c_str());
 	chainHime->Add(args.himeFilename.c_str());
-
-	SetHimeBranchAddr(chainHime);
-	SetSamuraiBranchAddr(chainSamurai);
+	setHimeRawBranchAddr(chainHime);
+	setSamuraiBranchAddr(chainSamurai);
 
 	auto mergedFile = new TFile(args.mergedFilename.c_str(), "RECREATE");
 	auto mergedTree = new TTree(MERGED_TREENAME.c_str(), MERGED_TREENAME.c_str());
-	CreateBranches(mergedTree);
+	createMergedBranches(mergedTree);
 
 	auto entriesHime = chainHime->GetEntries();
 	auto entriesSamurai = chainSamurai->GetEntries();
@@ -77,9 +76,10 @@ int main(int argc, char *argv[]) {
 
 		chainHime->GetEntry(iEvtHime);
 		chainSamurai->GetEntry(iEvtSamurai);
+		cleanHimeBranches(chainHime);
 
 		auto hime_stamp = hime.fastScaler;
-		auto samurai_stamp = samurai.lupots;
+		auto samurai_stamp = samurai.lupoTimeStamp;
 
 		if (args.debug) {
 			std::cout << "hime_stamp = " << hime_stamp << '\t';
@@ -113,6 +113,7 @@ int main(int argc, char *argv[]) {
 			}
 			iEvtHime++;
 			chainHime->GetEntry(iEvtHime);
+			cleanHimeBranches(chainHime);
 			hime_stamp = hime.fastScaler;
 			diff = samurai_stamp - hime_stamp;
 		}
@@ -153,7 +154,7 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-void CreateBranches(TTree *&mergedTree) {
+void createMergedBranches(TTree *&mergedTree) {
 	mergedTree->Branch("hime_nHits", &hime.nHits, "hime_nHits/i");
 	mergedTree->Branch("hime_tofRaw", &hime.tofRaw[0], "hime_tofRaw[hime_nHits]/D");
 	mergedTree->Branch("hime_tDiff", &hime.tDiff[0], "hime_tDiff[hime_nHits]/D");
@@ -166,17 +167,16 @@ void CreateBranches(TTree *&mergedTree) {
 	mergedTree->Branch("hime_fastScaler", &hime.fastScaler, "hime_fastScaler/l");
 	mergedTree->Branch("hime_eventNumber", &hime.eventNumber, "hime_eventNumber/l");
 
-	mergedTree->Branch("run", &samurai.run, "run/i");
-	mergedTree->Branch("event", &samurai.event, "event/i");
-	mergedTree->Branch("lupots", &samurai.lupots, "lupots/l");
-	mergedTree->Branch("kyoto_multi", &samurai.kyoto_multi, "kyoto_multi/i");
-	mergedTree->Branch("kyoto_bar", &samurai.kyoto_bar[0], "kyoto_bar[kyoto_multi]/i");
-	mergedTree->Branch("hime_veto_multi", &samurai.hime_veto_multi, "hime_veto_multi/i");
-	mergedTree->Branch("hime_veto_bar", &samurai.hime_veto_bar[0], "hime_veto_bar[hime_veto_multi]/i");
-	mergedTree->Branch("hime_veto_tof", &samurai.hime_veto_tof[0], "hime_veto_tof[hime_veto_multi]/D");
-	mergedTree->Branch("hime_veto_charge", &samurai.hime_veto_charge[0], "hime_veto_charge[hime_veto_multi]/D");
-	mergedTree->Branch("hime_veto_tdiff", &samurai.hime_veto_tdiff[0], "hime_veto_tdiff[hime_veto_multi]/D");
-	mergedTree->Branch("hime_veto_x", &samurai.hime_veto_x[0], "hime_veto_x[hime_veto_multi]/D");
+	mergedTree->Branch("runNumber", &samurai.runNumber, "runNumber/i");
+	mergedTree->Branch("eventNumber", &samurai.eventNumber, "eventNumber/i");
+	mergedTree->Branch("lupoTimeStamp", &samurai.lupoTimeStamp, "lupoTimeStamp/l");
+	mergedTree->Branch("kyotoMulti", &samurai.kyotoMulti, "kyotoMulti/i");
+	mergedTree->Branch("kyotoBarId", &samurai.kyotoBarId[0], "kyotoBarId[kyotoMulti]/i");
+	mergedTree->Branch("vetoMulti", &samurai.vetoMulti, "vetoMulti/i");
+	mergedTree->Branch("vetoBarId", &samurai.vetoBarId[0], "vetoBarId[vetoMulti]/i");
+	mergedTree->Branch("vetoTof", &samurai.vetoTof[0], "vetoTof[vetoMulti]/D");
+	mergedTree->Branch("vetoTot", &samurai.vetoTot[0], "vetoTot[vetoMulti]/D");
+	mergedTree->Branch("vetoTdiff", &samurai.vetoTdiff[0], "vetoTdiff[vetoMulti]/D");
 
 	return;
 }

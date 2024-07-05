@@ -7,48 +7,31 @@
 
 constexpr int SAMURAI_MAXHITS = 256;
 struct samuraiData {
-	unsigned int run, event;
-	ULong64_t lupots;
+	unsigned int runNumber, eventNumber;
+	ULong64_t lupoTimeStamp;
 
-	unsigned int kyoto_multi;
-	std::array<unsigned int, SAMURAI_MAXHITS> kyoto_bar;
-	unsigned int hime_veto_multi;
-	std::array<unsigned int, SAMURAI_MAXHITS> hime_veto_bar;
-	std::array<double, SAMURAI_MAXHITS> hime_veto_tof;
-	std::array<double, SAMURAI_MAXHITS> hime_veto_charge;
-	std::array<double, SAMURAI_MAXHITS> hime_veto_tdiff;
-	std::array<double, SAMURAI_MAXHITS> hime_veto_x;
-	void reset();
+	unsigned int kyotoMulti;
+	std::array<unsigned int, SAMURAI_MAXHITS> kyotoBarId;
+	unsigned int vetoMulti;
+	std::array<unsigned int, SAMURAI_MAXHITS> vetoBarId;
+	std::array<double, SAMURAI_MAXHITS> vetoTof;
+	std::array<double, SAMURAI_MAXHITS> vetoTot;
+	std::array<double, SAMURAI_MAXHITS> vetoTdiff;
 };
 
 samuraiData samurai;
-void SetSamuraiBranchAddr(TChain *&chain) {
-	chain->SetBranchAddress("run", &samurai.run);
-	chain->SetBranchAddress("event", &samurai.event);
-	chain->SetBranchAddress("lupots", &samurai.lupots);
+void setSamuraiBranchAddr(TChain *&chain) {
+	chain->SetBranchAddress("runNumber", &samurai.runNumber);
+	chain->SetBranchAddress("eventNumber", &samurai.eventNumber);
+	chain->SetBranchAddress("lupoTimeStamp", &samurai.lupoTimeStamp);
 
-	chain->SetBranchAddress("kyoto_multi", &samurai.kyoto_multi);
-	chain->SetBranchAddress("kyoto_bar", &samurai.kyoto_bar[0]);
-	chain->SetBranchAddress("hime_veto_multi", &samurai.hime_veto_multi);
-	chain->SetBranchAddress("hime_veto_bar", &samurai.hime_veto_bar[0]);
-	chain->SetBranchAddress("hime_veto_tof", &samurai.hime_veto_tof[0]);
-	chain->SetBranchAddress("hime_veto_charge", &samurai.hime_veto_charge[0]);
-	chain->SetBranchAddress("hime_veto_tdiff", &samurai.hime_veto_tdiff[0]);
-	chain->SetBranchAddress("hime_veto_x", &samurai.hime_veto_x[0]);
-
-	return;
-}
-
-void samuraiData::reset() {
-	lupots = 0;
-	kyoto_multi = 0;
-	hime_veto_multi = 0;
-	kyoto_bar.fill(0);
-	hime_veto_bar.fill(0);
-	hime_veto_tof.fill(0);
-	hime_veto_charge.fill(0);
-	hime_veto_tdiff.fill(0);
-	hime_veto_x.fill(0);
+	chain->SetBranchAddress("kyotoMulti", &samurai.kyotoMulti);
+	chain->SetBranchAddress("kyotoBarId", &samurai.kyotoBarId[0]);
+	chain->SetBranchAddress("vetoMulti", &samurai.vetoMulti);
+	chain->SetBranchAddress("vetoBarId", &samurai.vetoBarId[0]);
+	chain->SetBranchAddress("vetoTof", &samurai.vetoTof[0]);
+	chain->SetBranchAddress("vetoTot", &samurai.vetoTot[0]);
+	chain->SetBranchAddress("vetoTdiff", &samurai.vetoTdiff[0]);
 	return;
 }
 
