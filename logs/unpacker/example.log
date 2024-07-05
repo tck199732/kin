@@ -1,7 +1,7 @@
-/home/s063/exp/exp2406_s063/anaroot/users/kin/src
-add include path : -I/home/s063/exp/exp2406_s063/anaroot/users/kin/src/include
+/home/kin/Desktop/spirit2024-scripts/src/anaroot/install
+add include path : -I/home/kin/Desktop/spirit2024-scripts/src/anaroot/install/include
 reading libXMLParser.so
-reading /home/s063/exp/exp2406_s063/anaroot/users/kin/src/lib/libanaroot.so
+reading /home/kin/Desktop/spirit2024-scripts/src/anaroot/install/lib/libanaroot.so
 
  Manual of ANAROOT 
   http://be.nucl.ap.titech.ac.jp/~kondo/moin/moin.cgi/ANAROOT/Manual
@@ -10,9 +10,9 @@ reading /home/s063/exp/exp2406_s063/anaroot/users/kin/src/lib/libanaroot.so
 Processing macros/UnpackSamuraiData.C("ridf/data1036.ridf", "unpacked/data1036.root")...
   RIBFROOT-Info : [TArtEventStore] Constructor
   RIBFROOT-Info : [TArtStoreManager] Constructor
-  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] regist raw data container in store manager : RawEvent
-  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : RunInfo
-  RIBFROOT-Info : [/home/s063/svn/2024SAMURAI.s063/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : EventInfo
+  RIBFROOT-Info : [/home/kin/Desktop/spirit2024-scripts/src/anaroot/sources/Core/src/TArtStoreManager.cc] regist raw data container in store manager : RawEvent
+  RIBFROOT-Info : [/home/kin/Desktop/spirit2024-scripts/src/anaroot/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : RunInfo
+  RIBFROOT-Info : [/home/kin/Desktop/spirit2024-scripts/src/anaroot/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : EventInfo
   RIBFROOT-Info : [TArtFileDataSource] File = ridf/data1036.ridf
   RIBFROOT-Info : [TArtFileDataSource] Size = 74.51 (MB)
   RIBFROOT-Info : [TArtFileDataSource] Format = RIDF
@@ -24,6 +24,3 @@ Processing macros/UnpackSamuraiData.C("ridf/data1036.ridf", "unpacked/data1036.r
   RIBFROOT-Info : [TArtFileDataSource] Header     = DAQ reconfigure done. Data taking
   RIBFROOT-Info : [TArtFileDataSource] Ender      = 
   RIBFROOT-Info : [TArtParserRIDF] Run number = 1036
-
- no analoop is set
-
