@@ -14,8 +14,8 @@ std::string getFileName(int run_number);
 void ViewScaler() {
 
 	auto chainM1 = getChain("samurai", runM1);
-	chainM1->SetBranchAddress("scaler_b2f", &dataTuple.scalers[0]);
-	chainM1->SetBranchAddress("kyoto_multi", &dataTuple.multi);
+	chainM1->SetBranchAddress("scalerB2f", &dataTuple.scalers[0]);
+	chainM1->SetBranchAddress("kyotoMulti", &dataTuple.multi);
 
 	int incident, reacted;
 

@@ -45,7 +45,7 @@ long getEntries(const std::string &filename) {
 }
 
 void SetBranchAddress(TChain *chain) {
-	chain->SetBranchAddress("kyoto_multi", &kyoto.multi);
-	chain->SetBranchAddress("kyoto_bar", &kyoto.bars[0]);
+	chain->SetBranchAddress("kyotoMulti", &kyoto.multi);
+	chain->SetBranchAddress("kyotoBarId", &kyoto.bars[0]);
 	return;
 }

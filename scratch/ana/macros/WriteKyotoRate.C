@@ -38,10 +38,6 @@ void WriteKyotoRate(
 	auto y = getValue(hMulti, 0);
 	trimVector(x, y);
 
-	// for (auto i = 0; i < x.size(); i++) {
-	// 	std::cout << x[i] << " " << y[i] << std::endl;
-	// }
-
 	auto cumSum = getCumSumNormalized(y);
 
 	std::ofstream file(filenameOut);
@@ -59,8 +55,8 @@ long getEntries(const std::string &filename) {
 }
 
 void SetBranchAddress(TChain *chain) {
-	chain->SetBranchAddress("kyoto_multi", &kyoto.multi);
-	chain->SetBranchAddress("kyoto_bar", &kyoto.bars[0]);
+	chain->SetBranchAddress("kyotoMulti", &kyoto.multi);
+	chain->SetBranchAddress("kyotoBarId", &kyoto.bars[0]);
 	return;
 }
 

@@ -40,11 +40,11 @@ long getEntries(const std::string &filename) {
 }
 
 void SetBranchAddress(TChain *chain) {
-	chain->SetBranchAddress("sbt1_charge", &sbt1.charge);
-	chain->SetBranchAddress("sbt1_time", &sbt1.time);
-	chain->SetBranchAddress("sbt1_trigger", &sbt1.trigger);
-	chain->SetBranchAddress("sbt2_charge", &sbt2.charge);
-	chain->SetBranchAddress("sbt2_time", &sbt2.time);
-	chain->SetBranchAddress("sbt2_trigger", &sbt2.trigger);
+	chain->SetBranchAddress("sbtCharge1", &sbt1.charge);
+	chain->SetBranchAddress("sbtTime1", &sbt1.time);
+	chain->SetBranchAddress("sbtTrigger1", &sbt1.trigger);
+	chain->SetBranchAddress("sbtCharge2", &sbt2.charge);
+	chain->SetBranchAddress("sbtTime2", &sbt2.time);
+	chain->SetBranchAddress("sbtTrigger2", &sbt2.trigger);
 	return;
 }
