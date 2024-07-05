@@ -1,6 +1,8 @@
 #include "ana.hh"
 #include "argparse/argparse.hpp"
 
+const static std::string dataTreeName = "ridf";
+
 struct PhysicsData {
 	PhysicsData(const std::string &kyotoCalib, const std::string &himeVetoCalib) :
 		kyotoArray(kyotoCalib),
@@ -39,7 +41,6 @@ int main(int argc, char *argv[]) {
 	if (args.debug) {
 		std::cout << args.inputFile << std::endl;
 		std::cout << args.kyotoCalib << std::endl;
-		std::cout << args.himeVetoCalib << std::endl;
 		std::cout << args.outputFile << std::endl;
 		std::cout << args.treeName << std::endl;
 		std::exit(0);
@@ -47,7 +48,7 @@ int main(int argc, char *argv[]) {
 
 	PhysicsData dataPhy(args.kyotoCalib, args.himeVetoCalib);
 
-	auto chain = new TChain("ridf", "ridf");
+	auto chain = new TChain(dataTreeName.c_str(), dataTreeName.c_str());
 	chain->Add(args.inputFile.c_str());
 	SetSpiritBranchAddress(chain);
 
@@ -79,28 +80,27 @@ int main(int argc, char *argv[]) {
 
 void DefineTreeBranches(TTree *&tr, PhysicsData &dataPhy) {
 
-	tr->Branch("run", &samurai.run, "run/i");
-	tr->Branch("event", &samurai.event, "event/i");
-	tr->Branch("lupots", &samurai.lupots, "lupots/l");
+	tr->Branch("runNumber", &samurai.run, "runNumber/i");
+	tr->Branch("eventNumber", &samurai.event, "eventNumber/i");
+	tr->Branch("lupoTimeStamp", &samurai.lupots, "lupoTimeStamp/l");
 
-	tr->Branch("kyoto_multi", &dataPhy.kyotoArray.multi, "kyoto_multi/i");
-	tr->Branch("kyoto_bar", &dataPhy.kyotoArray.bars[0], "kyoto_bar[kyoto_multi]/i");
+	tr->Branch("kyotoMulti", &dataPhy.kyotoArray.multi, "kyotoMulti/i");
+	tr->Branch("kyotoBarId", &dataPhy.kyotoArray.bars[0], "kyotoBarId[kyotoMulti]/i");
 
-	tr->Branch("hime_veto_multi", &dataPhy.himeVeto.multi, "hime_veto_multi/i");
-	tr->Branch("hime_veto_bar", &dataPhy.himeVeto.bars[0], "hime_veto_bar[hime_veto_multi]/i");
-	tr->Branch("hime_veto_tof", &dataPhy.himeVeto.tofs[0], "hime_veto_tof[hime_veto_multi]/D");
-	tr->Branch("hime_veto_charge", &dataPhy.himeVeto.charges[0], "hime_veto_charge[hime_veto_multi]/D");
-	tr->Branch("hime_veto_tdiff", &dataPhy.himeVeto.tdiffs[0], "hime_veto_tdiff[hime_veto_multi]/D");
-	tr->Branch("hime_veto_x", &dataPhy.himeVeto.xpos[0], "hime_veto_x[hime_veto_multi]/D");
+	tr->Branch("vetoMulti", &dataPhy.himeVeto.multi, "vetoMulti/i");
+	tr->Branch("vetoBarId", &dataPhy.himeVeto.bars[0], "vetoBarId[vetoMulti]/i");
+	tr->Branch("vetoTof", &dataPhy.himeVeto.tofs[0], "vetoTof[vetoMulti]/D");
+	tr->Branch("vetoTot", &dataPhy.himeVeto.charges[0], "vetoTot[vetoMulti]/D");
+	tr->Branch("vetoTdiff", &dataPhy.himeVeto.tdiffs[0], "vetoTdiff[vetoMulti]/D");
 
-	tr->Branch("sbt1_charge", &dataPhy.sbtDetectors.sbt1.charge, "sbt1_charge/D");
-	tr->Branch("sbt1_time", &dataPhy.sbtDetectors.sbt1.time, "sbt1_time/I");
-	tr->Branch("sbt1_trigger", &dataPhy.sbtDetectors.sbt1.trigger, "sbt1_trigger/I");
-	tr->Branch("sbt2_charge", &dataPhy.sbtDetectors.sbt2.charge, "sbt2_charge/D");
-	tr->Branch("sbt2_time", &dataPhy.sbtDetectors.sbt2.time, "sbt2_time/I");
-	tr->Branch("sbt2_trigger", &dataPhy.sbtDetectors.sbt2.trigger, "sbt2_trigger/I");
+	tr->Branch("sbtCharge1", &dataPhy.sbtDetectors.sbt1.charge, "sbtCharge1/D");
+	tr->Branch("sbtTime1", &dataPhy.sbtDetectors.sbt1.time, "sbtTime1/I");
+	tr->Branch("sbtTrigger1", &dataPhy.sbtDetectors.sbt1.trigger, "sbtTrigger1/I");
+	tr->Branch("sbtCharge2", &dataPhy.sbtDetectors.sbt2.charge, "sbtCharge2/D");
+	tr->Branch("sbtTime2", &dataPhy.sbtDetectors.sbt2.time, "sbtTime2/I");
+	tr->Branch("sbtTrigger2", &dataPhy.sbtDetectors.sbt2.trigger, "sbtTrigger2/I");
 
-	tr->Branch("scaler_b2f", &dataPhy.scalerB2F.values[0], "scaler_b2f[32]/I");
+	tr->Branch("scalerB2f", &dataPhy.scalerB2F.values[0], "scalerB2f[32]/I");
 	return;
 }
 
@@ -112,12 +112,12 @@ void AddArguments(int argc, char **argv) {
 
 	program.add_argument("--kyoto_calib")
 		.default_value(std::string("database/kyoto/bar_channels.dat"))
-		.help("path to the kyoto calibration file.")
+		.help("path to the kyoto barId-channel mapping file.")
 		.required();
 
 	program.add_argument("--hime_veto_calib")
-		.default_value(std::string("database/veto/calib.dat"))
-		.help("path to the hime veto calibration file.")
+		.default_value(std::string("database/veto/channels.json"))
+		.help("path to the hime veto pmt-channel mapping file.")
 		.required();
 
 	program.add_argument("-o", "--output-filename")

@@ -5,13 +5,10 @@
 #include <fstream>
 #include <map>
 #include <string>
+#include <iostream>
 
-// static const int HIME_VETO_TL = 1;
-// static const int HIME_VETO_TR = 6;
-// static const int HIME_VETO_ML = 2;
-// static const int HIME_VETO_MR = 3;
-// static const int HIME_VETO_BL = 4;
-// static const int HIME_VETO_BR = 7;
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
 
 constexpr int MAX_HITS_HIME = 3;
 
@@ -28,9 +25,12 @@ public:
 	std::array<double, MAX_HITS_HIME> tofs;		  // time of flight of each hit
 	std::array<double, MAX_HITS_HIME> charges;	  // geometric mean of charge on both PMTs
 	std::array<double, MAX_HITS_HIME> tdiffs;	  // time-diff of each hit
-	std::array<double, MAX_HITS_HIME> xpos;		  // x position of each hit
+
 private:
-	std::array<double, 3> tdiff_offset;
-	std::array<double, 3> tdiff_slope;
+    void readChannelMap(const std::string &calibFile);
+    unsigned int mTopLeftChannel=6, mTopRightChannel=1;
+    unsigned int mMidLeftChannel=2, mMidRightChannel=3;
+    unsigned int mBotLeftChannel=4, mBotRightChannel=7;
+    unsigned int mTriggerChannel=31;
 };
 #endif

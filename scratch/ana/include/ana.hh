@@ -77,7 +77,6 @@ struct MTDC32 {
 
 struct samuraiData {
 	unsigned int run, event;
-	// std::uint64_t lupots;
 	ULong64_t lupots;
 
 	VmeEasiroc vme_easiroc;
