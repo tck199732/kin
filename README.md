@@ -51,15 +51,9 @@ This produces ROOT files with observables such as `tdiff, tof, multi, detectorId
 
 ### 3. Merging 
 -----------------
-Now, we need to merge the data from samurai daq and hime daq. To do this, first we copy files from the Hime side. This is done in [`scratch/merger/hime`](./scratch/merger/hime/).
+Now, we need to merge the data from samurai daq and hime daq. To do this, first we copy files from the Hime side. This is done in [`scratch/merger/hime`](./scratch/merger/hime/). If you are on shift, you can run `link_himefiles.py` to create sym link to the hime data files. 
 
-``` {bash}
-cd scratch/merger/hime
-./copy_hime.py # copy all files from sources to a specified directory.
-./clean_tree.py # clean up the root files by retaining only the tree.
-```
-
-Next, compile the merger program in the merger directory, i.e. `cd ../`, then `make`. Run the `a.py` script to merge files according to time stamp. Modify the `runId` in the script and simply `./a.py`. 
+Next, compile the merger program in the merger directory, i.e. `make`. Run the `a.py` script to merge files according to time stamp. Modify the `runId` in the script and simply `./a.py`. 
 
 Users are suggested to check the merging by running the executable on single run number with verbose mode `./merge.exe -i ${hime-file} -s ${samurai-file} --verbose`. In run `1150`, for example, the merging is not always complete, below shows part of the output 
 
