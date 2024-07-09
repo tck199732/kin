@@ -209,14 +209,13 @@ void draw_HIME_experiment(
 	}
 
 	// initialize histograms
-
 	int tdiff_nbins = 250;
-
+	int tofbins = 20000;
 	// initialize histograms
-	TH1F hTof("hTof", "ToF (roughly calibrated)", 10000, -300, 500);
-	TH1F hTofL1("hTofL1", "ToF (L1) (roughly calibrated)", 10000, -300, 500);
-	TH1F hTofL2("hTofL2", "ToF (L2) (roughly calibrated)", 10000, -300, 500);
-	TH1F hTofL3("hTofL3", "ToF (L3) (roughly calibrated)", 10000, -300, 500);
+	TH1F hTof("hTof", "ToF (roughly calibrated)", tofbins, -300, 500);
+	TH1F hTofL1("hTofL1", "ToF (L1) (roughly calibrated)", tofbins, -300, 500);
+	TH1F hTofL2("hTofL2", "ToF (L2) (roughly calibrated)", tofbins, -300, 500);
+	TH1F hTofL3("hTofL3", "ToF (L3) (roughly calibrated)", tofbins, -300, 500);
 	TH2F hTofVsModuleID("hTofVsModuleID", "ToF vs. module ID", 72, 0, 72, 5000, -250, 250);
 	TH1F hSbtTimeOfTrigger("hSbtTimeOfTrigger", "SBT time of trigger", 100000, -300, 500);
 
@@ -470,7 +469,7 @@ void draw_HIME_experiment(
 				tofCalib =
 					spirit.hime_tofRaw[h] - (calibrate_tof ? 0 : time_offset[mod]) - TMath::Abs(posdep / 2.9999 * 10.);
 				tofCalib += sbtTimeOfTrigger;
-				tofCalib -= -110.82;
+				tofCalib -= -110.22;
 				if (!calibrate_tof)
 					tofCalib += (11.8 + 2. * 4.8 / 2.9999 * 10);
 				// tofCalib += 0;
@@ -479,11 +478,11 @@ void draw_HIME_experiment(
 				//					tofCalib -= (18.574 - 0.1967 * tot - 3.1055);
 
 				if (!calibrate_walk)
-					tofCalib += 0; // 15.4;
+					tofCalib += 16.85; // 15.4;
 				if (!calibrate_walk && (tot < totTresh))
-					tofCalib -= (-0.1599 * tot - 6.4614);
+					tofCalib -= (-0.1899 * tot - 6.4614);
 				if (!calibrate_walk && (tot >= totTresh))
-					tofCalib -= (-0.1599 * totTresh - 6.4614);
+					tofCalib -= (-0.1899 * totTresh - 6.4614);
 				//					tofCalib -= (18.574 - 0.2232 * totTresh + 0.0019 * totTresh * totTresh);
 				//				if (calibrate_walk && tot > (tofCalib * (-10.) + 200))
 				//				if (calibrate_walk && tot > (tofCalib * (-5.1734) - 4.8925))
