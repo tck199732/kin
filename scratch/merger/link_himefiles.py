@@ -35,5 +35,5 @@ for data_dir in data_dir_list:
         symlink = out_dir / f'data{runID:04d}.root'
         if symlink.exists():
             symlink.unlink()
-            symlink.symlink_to(hime_file)
+        symlink.symlink_to(hime_file)
         
