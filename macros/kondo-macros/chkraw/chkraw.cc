@@ -9,8 +9,8 @@ void chkraw(Int_t nRun = 3) {
 
 	TArtRawEventObject *rawevent = estore->GetRawEventObject();
 
-	TFile *fout = new TFile("macros/chkraw/chkraw.root", "RECREATE");
-	TNtuple *ntp = new TNtuple("ntp", "ntp", "dev:fp:det:geo:ch:val:edge");
+	TFile *fout = new TFile("macros/kondo-macros/chkraw/chkraw.root", "RECREATE");
+	TNtuple *ntp = new TNtuple("ntp", "ntp", "dev:fp:det:mod:geo:ch:val:edge");
 
 	int neve = 0;
 	while (estore->GetNextEvent() && neve < 10000) {
@@ -34,7 +34,10 @@ void chkraw(Int_t nRun = 3) {
 				int id = d->GetDatatypeID();
 				int edge = d->GetEdge();
 
-				ntp->Fill((float)device, (float)fp, (float)detector, (float)geo, (float)ch, (float)val, (float)edge);
+				ntp->Fill(
+					(float)device, (float)fp, (float)detector, (float)module, (float)geo, (float)ch, (float)val,
+					(float)edge
+				);
 			}
 		}
 

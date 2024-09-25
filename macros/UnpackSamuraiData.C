@@ -122,8 +122,8 @@ void UnpackSamuraiData(
 		for (auto i = 0; i < rawevent->GetNumSeg(); i++) {
 
 			auto seg = rawevent->GetSegment(i);
-			auto fp = seg->GetFP(); // not used
-			auto devide = seg->GetDevice();
+			auto fp = seg->GetFP();
+			auto device = seg->GetDevice(); // not used
 			auto addr = seg->GetAddress();
 			auto mod = seg->GetModule();
 			auto det = seg->GetDetector();
