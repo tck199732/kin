@@ -75,17 +75,16 @@ void SetBranchAddress(TChain *&chain) {
 	chain->SetBranchAddress("hime_fastScaler", &spirit.hime_fastScaler);
 	chain->SetBranchAddress("hime_eventNumber", &spirit.hime_eventNumber);
 
-	chain->SetBranchAddress("run", &spirit.run);
-	chain->SetBranchAddress("event", &spirit.event);
-	chain->SetBranchAddress("lupots", &spirit.lupots);
-	chain->SetBranchAddress("kyoto_multi", &spirit.kyoto_multi);
-	chain->SetBranchAddress("kyoto_bar", &spirit.kyoto_bar[0]);
-	chain->SetBranchAddress("hime_veto_multi", &spirit.hime_veto_multi);
-	chain->SetBranchAddress("hime_veto_bar", &spirit.hime_veto_bar[0]);
-	chain->SetBranchAddress("hime_veto_tof", &spirit.hime_veto_tof[0]);
-	chain->SetBranchAddress("hime_veto_charge", &spirit.hime_veto_charge[0]);
-	chain->SetBranchAddress("hime_veto_tdiff", &spirit.hime_veto_tdiff[0]);
-	chain->SetBranchAddress("hime_veto_x", &spirit.hime_veto_x[0]);
+	chain->SetBranchAddress("runNumber", &spirit.run);
+	chain->SetBranchAddress("eventNumber", &spirit.event);
+	chain->SetBranchAddress("lupoTimeStamp", &spirit.lupots);
+	chain->SetBranchAddress("kyotoMulti", &spirit.kyoto_multi);
+	chain->SetBranchAddress("kyotoBarId", &spirit.kyoto_bar[0]);
+	chain->SetBranchAddress("vetoMulti", &spirit.hime_veto_multi);
+	chain->SetBranchAddress("vetoBarId", &spirit.hime_veto_bar[0]);
+	chain->SetBranchAddress("vetoTof", &spirit.hime_veto_tof[0]);
+	chain->SetBranchAddress("vetoTot", &spirit.hime_veto_charge[0]);
+	chain->SetBranchAddress("vetoTdiff", &spirit.hime_veto_tdiff[0]);
 	return;
 }
 
